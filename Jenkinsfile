@@ -15,7 +15,9 @@ pipeline {
            
                stage ('Deploy') {
                     when {
+                        not {
                             branch 'master'
+                        }
                     }
                     steps {
                        echo "print karunakar is deployed"
