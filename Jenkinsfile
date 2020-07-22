@@ -15,5 +15,12 @@ pipeline {
                 echo "testing is done"
             }
         }
-}
+        stage ('Deploy') {
+        steps {
+            when {
+                not {
+                    branch "master"
+                }
+            }
+        }
 }
