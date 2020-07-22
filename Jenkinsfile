@@ -9,18 +9,19 @@ pipeline {
         
         }
         stage ('test') {
-            
             steps {
                 input ("do you want to test")
                 echo "testing is done"
             }
         }
         stage ('Deploy') {
-        steps {
-            when {
-                not {
-                    branch "master"
+            steps {
+                when {
+                    not {
+                        branch "master"
+                    }
                 }
             }
         }
+           
 }
