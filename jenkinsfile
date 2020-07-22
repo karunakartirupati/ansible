@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+   
+    stages {
+        stage ('Build') {
+            agent {
+                label "Centos72"
+            }
+            steps {
+            sh  "hostname"
+            }
+        }
+        stage ('Test') {
+            agent {
+                label "Centos72"
+            }
+            steps {
+                
+             sh  "hostname"
+            }
+        }
+        stage ('Deploy') {
+            agent {
+                label "Ubuntu74"
+            }
+            steps {
+            sh  "hostname"
+        
+            }
+        }
+    }
+}
