@@ -15,10 +15,9 @@ pipeline {
            
                stage ('Deploy') {
                     steps {
-                            when {
-                                    not {
-                                            branch "master"
-                                    }
+                            when {                                   
+                                  branch "master"
+                                 
                             }
                     }
                 }
