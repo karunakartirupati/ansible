@@ -14,11 +14,12 @@ pipeline {
                 }
            
                stage ('Deploy') {
-                    steps {
-                            when {                                   
+                    when {                                                          
                                   branch "master"
-                                 
-                            }
+    
+                    }
+                    steps {
+                       echo "print karunakar is deployed"
                     }
                 }
        }
