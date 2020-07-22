@@ -9,6 +9,8 @@ pipeline {
         
         }
         stage ('test') {
+            
+            input ("do you want to test")
             steps {
                 echo "testing is done"
             }
