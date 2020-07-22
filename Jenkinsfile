@@ -2,11 +2,16 @@ pipeline {
     agent any
    
     stages {
-        stage ('Checkout') {
+        stage ('build') {
             steps {
-                git "https://github.com/karunakartirupati/ansible.git"
+                echo "start the build"
             }
         
         }
-    }
+        stage ('test') {
+            steps {
+                echo "testing is done"
+            }
+        }
+}
 }
