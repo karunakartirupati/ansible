@@ -1,0 +1,33 @@
+pipeline {
+    agent none
+    stages {
+        stage ('Start openjdk container'){
+            agent { 
+                    docker { 
+                        image 'openjdk:7'
+                        reuseNode true
+                        args '-u root'
+                    }
+            }
+                steps {
+                     sh 'echo inside openjdk container........'
+                    sh 'java -version'
+                }
+            
+        }
+        stage ('Start centos container'){
+            agent { 
+                    docker { 
+                        image 'centos:latest'
+                        reuseNode true
+                        args '-u root'
+                    }
+            }
+            steps {
+                sh 'echo inside Centos container........'
+                sh 'uname -a'
+                sh 'yum update -y'
+            }
+        }
+    }
+}

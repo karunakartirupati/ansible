@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    stages{
+        stage ('Git Checkout') {
+            steps {
+                git 'https://github.com/karunakartirupati/ansible'
+            }
+        }
+        stage ('Run ansible playbook') {
+            steps {
+                ansiblePlaybook credentialsId: 'ssh_key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory.ini', playbook: 'httpd.yaml'
+            }
+        }
+    }
+}
