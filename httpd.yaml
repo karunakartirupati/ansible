@@ -1,0 +1,32 @@
+---
+- name: Install httpd
+  hosts: webserver
+  become: true
+  #serial: 2
+  #serial:
+  # - 1
+  # - 2
+  serial:
+    - 30%
+    - 40%
+
+  tasks:
+  - name: un-install httpd
+    yum:
+      name: httpd
+      state: absent
+
+  - name: Install httpd
+    yum:
+      name: httpd
+      state: present
+
+  - name: copy index.html
+    copy: src=/home/vagrant/karuna/index.html dest=/var/www/html/index.html
+
+  - name: Start httpd
+    service:
+      name: httpd
+      state: started
+
+
