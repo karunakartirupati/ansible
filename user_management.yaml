@@ -1,0 +1,36 @@
+---
+- hosts: all
+  become: true
+
+  tasks:
+  - name: group add
+    group:
+     name=ansible
+     state=present
+    tags: add_new_group
+
+  - name: add several users
+    user:
+     name={{ item }}
+     state=present
+     groups=ansible
+     shell: /bin/bash
+     generate_ssh_key: yes
+     ssh_key_bits: 2048
+     ssh_key_file: .ssh/id_rsa
+
+    with_items:
+      - karunakar
+      - karuna
+      - sreedevi
+    tags: add_new_user
+
+  - name: Force users to change the password
+    command:
+     chage -d 0 {{ item }}
+    
+    with_items:
+      - karunakar
+      - karuna
+      - sreedevi
+    

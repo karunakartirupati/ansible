@@ -1,0 +1,10 @@
+---
+- hosts: all
+  tasks:
+   - name: install on centos
+     yum: name=httpd state=absent
+     when: ansible_distribution == 'CentOS'
+   
+   - name: install on ubuntu
+     apt: name=apache2 state=absent
+     when: ansible_distribution == 'Ubuntu'  

@@ -1,0 +1,21 @@
+---
+- hosts: all
+  vars_prompt:
+   - name: takeinput
+     prompt: "Enter what do you like"
+     register: takeinput
+  tasks:
+   - name: using when in ansible
+     command: uptime
+     register: uptime
+   - debug: var=uptime.stdout
+     when: ansible_distribution == 'CentOS'
+   
+   - name: print register
+     command: ls -al
+     register: kkoutputofls
+   #- debug: var=kkoutputofls.stdout
+   
+   - debug:
+       msg: "You have entered {{takeinput }}"
+   - debug: var=takeinput

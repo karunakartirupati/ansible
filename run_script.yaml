@@ -1,0 +1,16 @@
+---
+ - hosts: all
+   tasks: 
+   - name: Run a script only if file.txt does not exist on the remote node   
+     script: /home/vagrant/karuna/script.sh
+     args:
+       creates: /home/vagrant/output.txt
+     register: karunaoutput
+   - name: Run a script using an executable in a system path
+     script: /home/vagrant/karuna/python.py
+     args:
+       executable: python
+     register: pyout
+   - name: record output
+     debug: var=pyout 
+ 

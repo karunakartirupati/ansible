@@ -1,0 +1,42 @@
+---
+- hosts: webserver
+  user: root
+  tasks:
+  - name: add one new line in a file
+    lineinfile:
+       path: /etc/hosts
+       line: "192.168.33.70  centos-vm5"
+       state: present
+       backup: yes
+
+  - name: delete entry in file
+    lineinfile:
+      path: /etc/hosts
+      line: "192.168.33.74  centos-vm5"
+      state: absent
+      backup: yes
+   
+  - name: comment a line in a file
+    lineinfile:
+      path: /etc/hosts
+      regexp: '^(192.168.33.70 .*)'
+      line: '#\1'
+      backrefs: yes
+      state: present
+      backup: yes
+  - name: replace a line with new line
+    lineinfile:
+      path: /etc/hosts
+      regexp: "^(# \\d{3}.\\d{3}.\\d{2}.\\d{2})"
+      line: "192.168.33.70  centos-vm5"
+      state: present
+      backup: yes
+  - name: insert before the searched line
+    lineinfile:
+      path: /etc/hosts
+      #regexp: "192.168.33.70  centos-vm5"
+      insertbefore: "192.168.33.70  centos-vm5"
+      line: "new line inserted before"
+      state: present
+      backup: yes
+

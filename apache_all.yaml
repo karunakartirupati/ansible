@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: true
+  tasks:
+   - name: install on centos
+     yum: name=httpd state=latest
+     when: ansible_distribution == 'CentOS'
+   
+   - name: install on ubuntu
+     apt: name=apache2 state=latest
+     when: ansible_distribution == 'Ubuntu'  

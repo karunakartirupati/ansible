@@ -1,0 +1,14 @@
+---
+- hosts: all
+  tasks:
+  - name: create kk directory in all the machine
+    file: 
+     path: /root/kk
+     state: directory 
+  - name: deploy template file with def ansible variables
+    template:
+     src: /root/kk/playbook/template.j2
+     dest: /root/kk/template.txt
+
+
+

@@ -1,0 +1,19 @@
+---
+- hosts: webserver
+  become: true
+  tasks:
+  - name: install lamp stack
+    yum: name={{ item }} state=present
+    with_items:
+    - httpd
+    - mysql
+    - php
+   
+  - name: start all services
+    service: name={{ item }} state=started
+    with_items:
+    - httpd
+    - mysqld
+  - name: copy index.html
+    copy: src=/home/vagrant/karuna/index.html dest=/var/www/html/index.html
+ 

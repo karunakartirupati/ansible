@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: true
+
+  tasks:
+   - name: install all softwares
+     yum: name="{{ item }}" state=present update_cache=yes
+     with_items:
+     - nginx
+     - perl
+  
+   - name: start nginx service
+     service: name=nginx state=started 

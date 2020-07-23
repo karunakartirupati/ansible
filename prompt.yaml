@@ -1,0 +1,20 @@
+---
+- hosts: all
+
+  vars_prompt:
+    - name: username
+      prompt: "enter your username"
+      private: no 
+    
+    - name: passwd
+      prompt: "enter the password"
+      private: yes
+      encrypt: "sha512_crypt"
+      confirm: yes
+
+  tasks: 
+    - name: create user {{ username }}
+      user: 
+        name: "{{ username }}" 
+        password: "{{ passwd }}" 
+    

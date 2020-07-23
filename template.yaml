@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: deploy variable file
+    template: 
+     src: template.j2
+     dest: /home/vagrant/template.txt
+ 
