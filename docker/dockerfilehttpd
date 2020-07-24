@@ -1,0 +1,11 @@
+FROM centos:latest
+
+MAINTAINER karunakar tirupati
+
+RUN yum update -y && yum install -y httpd
+
+
+EXPOSE 80
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+
+

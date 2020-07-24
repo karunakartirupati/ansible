@@ -1,0 +1,8 @@
+FROM centos:latest
+
+MAINTAINER karunakar tirupati
+
+RUN yum update -y 
+RUN yum install -y nginx
+EXPOSE 80
+ENTRYPOINT ["/usr/sbin/nginx", "-g", "daemon off;"]
