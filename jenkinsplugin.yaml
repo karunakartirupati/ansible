@@ -14,6 +14,6 @@
   - name: install jenkins plug
     jenkins_plugin:
     name: ansible
-    url_username: admin
-    url_password: admin
-    url: http://192.168.33.71:8080
+    url1_username: admin
+    url1_password: admin
+    url1: http://192.168.33.71:8080
