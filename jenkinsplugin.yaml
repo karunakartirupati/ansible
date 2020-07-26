@@ -1,5 +1,5 @@
 ---
-- name: Install plugin
+- name: Install httpd
   hosts: jenkinsmachines
   become: true
 
@@ -7,8 +7,13 @@
   - name: install jenkins plu-ins
     jenkins_plugin:
     name: build-pipeline-plugin
-   
-  - name: install jenkins plu-ins
+    url_username: admin
+    url_password: admin
+    url: http://192.168.33.71:8080
+
+  - name: install jenkins plug
     jenkins_plugin:
     name: ansible
-   
+    url_username: admin
+    url_password: admin
+    url: http://192.168.33.71:8080
