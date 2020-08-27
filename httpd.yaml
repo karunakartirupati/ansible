@@ -1,6 +1,6 @@
 ---
 - name: Install httpd
-  hosts: webserver
+  hosts: webservers
   become: true
   #serial: 2
   #serial:
