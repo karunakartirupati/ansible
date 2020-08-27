@@ -6,9 +6,9 @@
   #serial:
   # - 1
   # - 2
-  serial:
-    - 30%
-    - 40%
+  #serial:
+  # - 30%
+  # - 40%
 
   tasks:
   - name: un-install httpd
